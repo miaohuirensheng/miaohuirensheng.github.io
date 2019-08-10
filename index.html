@@ -213,7 +213,7 @@
 
 <div class="post-preview">
 
-    <a href="/2019/08/05/problem/">
+    <a href="/2019/08/07/problem/">
         <h2 class="post-title">
             Untitled
         </h2>
@@ -228,9 +228,189 @@
     
         <p class="post-meta" style="margin: 10px 0;">
             Posted by zhenghao on
-            2019-08-05
+            2019-08-07
         </p>
         <div class="tags">
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2019/04/26/thread-5/">
+        <h2 class="post-title">
+            synchronized
+        </h2>
+        <h3 class="post-subtitle">
+            java多线程
+        </h3>
+        <div class="post-content-preview">
+            synchronized
+同步锁，它可以把任何非null的对象当作锁。它是java解决并发问题的一种手段，它保证了线程互斥的访问同步代码。
+synchronized作用范围
+作用于方法:锁住的是当前对象（this）;
+作用于静态方法：该类的字节码，是class实例
+作用于代码块：任意对象
+...
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by zhenghao on
+            2019-04-26
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#多线程" title="多线程">多线程</a>
+            
+              <a href="/tags/#synchronized" title="synchronized">synchronized</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2019/04/18/thread-4/">
+        <h2 class="post-title">
+            线程的五种状态
+        </h2>
+        <h3 class="post-subtitle">
+            java多线程
+        </h3>
+        <div class="post-content-preview">
+            线程的五种状态
+新建
+新创建一个线程对象，但是没有调用此对象的启动方法。
+就绪
+线程创建后，调用了start()的方法。该线程位于运行的线程池中，等待cpu调度。
+运行
+线程获取了cpu时间片，执行程序代码。
+阻塞
+线程因为某种原因放弃了对CPU的使用，暂时停止运行。
+等待阻塞：运行的线程执行了wait()方法，jvm把该线程放入到等待池中。
+同步阻塞：运行的线程获取同步锁的时候，若该同步锁......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by zhenghao on
+            2019-04-18
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#多线程" title="多线程">多线程</a>
+            
+              <a href="/tags/#线程的五种状态" title="线程的五种状态">线程的五种状态</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2019/04/15/thread-3/">
+        <h2 class="post-title">
+            创建线程的几种方式
+        </h2>
+        <h3 class="post-subtitle">
+            java多线程
+        </h3>
+        <div class="post-content-preview">
+            创建线程的几种方式
+继承Thread
+123456789101112131415161718192021public class Thread1 &#123;    public static void main(String args[])&#123;        Runner xiaoMing=new Runner();        xiaoMing.setName("小明");  ......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by zhenghao on
+            2019-04-15
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#多线程" title="多线程">多线程</a>
+            
+              <a href="/tags/#创建线程的几种方式" title="创建线程的几种方式">创建线程的几种方式</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2019/04/12/thread-2/">
+        <h2 class="post-title">
+            java内存模型
+        </h2>
+        <h3 class="post-subtitle">
+            java多线程
+        </h3>
+        <div class="post-content-preview">
+             java内存模型  
+今天说一下java内存模型，在说java内存模型的时候，我门提一下老生常谈的并发编程，以及并发编程到底是要解决什么问题。
+并发编程解决的问题主要是两个问题:线程之间通信,以及线程的同步。
+线程之间的通信有两种方式：一种是共享内存，另外一种是消息传递。Java并发编程采用的就是共享内存模型。
+什么是java内存模型
+Java 内存模型简称JMM,它决定了一个线程对共享变......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by zhenghao on
+            2019-04-12
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#多线程" title="多线程">多线程</a>
+            
+              <a href="/tags/#内存模型" title="内存模型">内存模型</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2019/04/10/thread-1/">
+        <h2 class="post-title">
+            java多线程基本概念
+        </h2>
+        <h3 class="post-subtitle">
+            java多线程
+        </h3>
+        <div class="post-content-preview">
+             进程与线程  
+进程:操作系统进行资源分配的基本单位。有独立的地址空间
+线程:CPU调调度的基本单位，有自己的堆栈和共享变量
+ 并行与并发  
+并行:在同一时间点同时执行。举个例子，你吃饭的时候，电话来了，你边吃饭边打电话就行并行操作。
+并发：在同一个时间片内执行。举个例子，你吃饭的时候，电话来了，你接完电话在吃饭说明你支持并发。
+ 同步与异步  
+同步:发出一个请求，需要等待返回，然后才......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by zhenghao on
+            2019-04-10
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#多线程" title="多线程">多线程</a>
+            
+              <a href="/tags/#基本概念" title="基本概念">基本概念</a>
             
         </div>
     
@@ -290,42 +470,6 @@
 
 <div class="post-preview">
 
-    <a href="/2018/09/28/jvm-learning-2/">
-        <h2 class="post-title">
-            java运行时常量池
-        </h2>
-        <h3 class="post-subtitle">
-            jvm学习系列文章
-        </h3>
-        <div class="post-content-preview">
-            java运行时常量池
-public class Test {
-public static void main(String [] args){
-    String s1=&quot;abc&quot;;
-    String s2=&quot;abc&quot;;
-    String s3=new String(&quot;abc&quot;);
-    System.out.print......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by zhenghao on
-            2018-09-28
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#jvm" title="jvm">jvm</a>
-            
-              <a href="/tags/#java运行时常量池" title="java运行时常量池">java运行时常量池</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
     <a href="/2018/09/28/jvm-learning-1/">
         <h2 class="post-title">
             java内存区域
@@ -363,22 +507,21 @@ public static void main(String [] args){
 
 <div class="post-preview">
 
-    <a href="/2018/09/28/thread-1/">
+    <a href="/2018/09/28/jvm-learning-2/">
         <h2 class="post-title">
-            java内存区域
+            java运行时常量池
         </h2>
         <h3 class="post-subtitle">
             jvm学习系列文章
         </h3>
         <div class="post-content-preview">
-             进程与线程  
-进程:操作系统进行资源分配的基本单位。有独立的地址空间
-线程:CPU调调度的基本单位，有自己的堆栈和共享变量
- 并行与并发  
-并行:在同一时间点同时执行。举个例子，你吃饭的时候，电话来了，你边吃饭边打电话就行并行操作。
-并发：在同一个时间片内执行。举个例子，你吃饭的时候，电话来了，你接完电话在吃饭说明你支持并发。
- 同步与异步  
-同步:发出一个请求，需要等待返回，然后才......
+            java运行时常量池
+public class Test {
+public static void main(String [] args){
+    String s1=&quot;abc&quot;;
+    String s2=&quot;abc&quot;;
+    String s3=new String(&quot;abc&quot;);
+    System.out.print......
         </div>
     </a>
     
@@ -390,150 +533,7 @@ public static void main(String [] args){
             
               <a href="/tags/#jvm" title="jvm">jvm</a>
             
-              <a href="/tags/#java运行区域" title="java运行区域">java运行区域</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2018/09/28/thread-2/">
-        <h2 class="post-title">
-            java内存区域
-        </h2>
-        <h3 class="post-subtitle">
-            jvm学习系列文章
-        </h3>
-        <div class="post-content-preview">
-             java内存模型  
-今天说一下java内存模型，在说java内存模型的时候，我门提一下老生常谈的并发编程，以及并发编程到底是要解决什么问题。
-并发编程解决的问题主要是两个问题:线程之间通信,以及线程的同步。
-线程之间的通信有两种方式：一种是共享内存，另外一种是消息传递。Java并发编程采用的就是共享内存模型。
-什么是java内存模型
-Java 内存模型简称JMM,它决定了一个线程对共享变......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by zhenghao on
-            2018-09-28
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#jvm" title="jvm">jvm</a>
-            
-              <a href="/tags/#java运行区域" title="java运行区域">java运行区域</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2018/09/28/thread-3/">
-        <h2 class="post-title">
-            java内存区域
-        </h2>
-        <h3 class="post-subtitle">
-            jvm学习系列文章
-        </h3>
-        <div class="post-content-preview">
-            创建线程的几种方式
-继承Thread
-123456789101112131415161718192021public class Thread1 &#123;    public static void main(String args[])&#123;        Runner xiaoMing=new Runner();        xiaoMing.setName("小明");  ......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by zhenghao on
-            2018-09-28
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#jvm" title="jvm">jvm</a>
-            
-              <a href="/tags/#java运行区域" title="java运行区域">java运行区域</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2018/09/28/thread-4/">
-        <h2 class="post-title">
-            java内存区域
-        </h2>
-        <h3 class="post-subtitle">
-            jvm学习系列文章
-        </h3>
-        <div class="post-content-preview">
-            线程的五种状态
-新建
-新创建一个线程对象，但是没有调用此对象的启动方法。
-就绪
-线程创建后，调用了start()的方法。该线程位于运行的线程池中，等待cpu调度。
-运行
-线程获取了cpu时间片，执行程序代码。
-阻塞
-线程因为某种原因放弃了对CPU的使用，暂时停止运行。
-等待阻塞：运行的线程执行了wait()方法，jvm把该线程放入到等待池中。
-同步阻塞：运行的线程获取同步锁的时候，若该同步锁......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by zhenghao on
-            2018-09-28
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#jvm" title="jvm">jvm</a>
-            
-              <a href="/tags/#java运行区域" title="java运行区域">java运行区域</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2018/09/28/thread-5/">
-        <h2 class="post-title">
-            java内存区域
-        </h2>
-        <h3 class="post-subtitle">
-            jvm学习系列文章
-        </h3>
-        <div class="post-content-preview">
-            synchronized
-同步锁，它可以把任何非null的对象当作锁。它是java解决并发问题的一种手段，它保证了线程互斥的访问同步代码。
-synchronized作用范围
-作用于方法:锁住的是当前对象（this）;
-作用于静态方法：该类的字节码，是class实例
-作用于代码块：任意对象
-...
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by zhenghao on
-            2018-09-28
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#jvm" title="jvm">jvm</a>
-            
-              <a href="/tags/#java运行区域" title="java运行区域">java运行区域</a>
+              <a href="/tags/#java运行时常量池" title="java运行时常量池">java运行时常量池</a>
             
         </div>
     
@@ -612,17 +612,29 @@ I publish the whole project f......
     <div class="tags">
         
             
-        
-            
-        
-            
-            <a href="/tags/#jvm" title="jvm" rel="8">jvm</a>
+            <a href="/tags/#jvm" title="jvm" rel="3">jvm</a>
             
         
             
         
             
-            <a href="/tags/#java运行区域" title="java运行区域" rel="6">java运行区域</a>
+        
+            
+        
+            
+        
+            
+        
+            
+            <a href="/tags/#多线程" title="多线程" rel="5">多线程</a>
+            
+        
+            
+        
+            
+        
+            
+        
             
         
             
@@ -697,23 +709,23 @@ I publish the whole project f......
     <ul>
       
         <li>
-          <a href="/2019/08/05/problem/">(no title)</a>
+          <a href="/2019/08/07/problem/">(no title)</a>
         </li>
       
         <li>
-          <a href="/2018/10/10/jvm-learning-3/">对象在内存中的布局</a>
+          <a href="/2019/04/26/thread-5/">synchronized</a>
         </li>
       
         <li>
-          <a href="/2018/09/28/jvm-learning-2/">java运行时常量池</a>
+          <a href="/2019/04/18/thread-4/">线程的五种状态</a>
         </li>
       
         <li>
-          <a href="/2018/09/28/jvm-learning-1/">java内存区域</a>
+          <a href="/2019/04/15/thread-3/">创建线程的几种方式</a>
         </li>
       
         <li>
-          <a href="/2018/09/28/thread-1/">java内存区域</a>
+          <a href="/2019/04/12/thread-2/">java内存模型</a>
         </li>
       
     </ul>

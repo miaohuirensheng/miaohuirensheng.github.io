@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          ZhengHao|云楣信息科技
+          java多线程基本概念 - ZhengHao|云楣信息科技
         
     </title>
 
-    <link rel="canonical" href="http://yoursite-url/2019/08/05/problem/">
+    <link rel="canonical" href="http://yoursite-url/2019/04/10/thread-1/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -69,7 +69,7 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('undefined')
+            background-image: url('Demo.png')
             /*post*/
         
     }
@@ -90,12 +90,16 @@
                     <div class="post-heading">
                         <div class="tags">
                             
+                              <a class="tag" href="/tags/#多线程" title="多线程">多线程</a>
+                            
+                              <a class="tag" href="/tags/#基本概念" title="基本概念">基本概念</a>
+                            
                         </div>
-                        <h1></h1>
-                        <h2 class="subheading"></h2>
+                        <h1>java多线程基本概念</h1>
+                        <h2 class="subheading">java多线程</h2>
                         <span class="meta">
                             Posted by zhenghao on
-                            2019-08-05
+                            2019-04-10
                         </span>
                     </div>
                 
@@ -212,15 +216,38 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2><span id="使用dubbo服务出现javaioioexception-invalid-constant-type-18异常解决办法">使用Dubbo服务出现java.io.IOException: invalid constant type: 18异常解决办法</span></h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.alibaba&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;dubbo&lt;/artifactId&gt;</span><br><span class="line">    &lt;exclusions&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">            &lt;artifactId&gt;spring&lt;/artifactId&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">        &lt;/exclusion&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">            &lt;artifactId&gt;netty&lt;/artifactId&gt;</span><br><span class="line">            &lt;groupId&gt;org.jboss.netty&lt;/groupId&gt;</span><br><span class="line">        &lt;/exclusion&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">            &lt;groupId&gt;org.javassist&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;javassist&lt;/artifactId&gt;</span><br><span class="line">        &lt;/exclusion&gt;</span><br><span class="line">    &lt;/exclusions&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.javassist&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;javassist&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;3.18.2-GA&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
-<p>dubbo自身依赖的是3.15.0-GA，版本过低，将版本升级到3.18.2-GA即可</p>
+                <h1><span id="进程与线程"> 进程与线程  </span></h1>
+进程:操作系统进行资源分配的基本单位。有独立的地址空间
+线程:CPU调调度的基本单位，有自己的堆栈和共享变量
+<h1><span id="并行与并发"> 并行与并发  </span></h1>
+并行:在同一时间点同时执行。举个例子，你吃饭的时候，电话来了，你边吃饭边打电话就行并行操作。
+并发：在同一个时间片内执行。举个例子，你吃饭的时候，电话来了，你接完电话在吃饭说明你支持并发。
+<h1><span id="同步与异步"> 同步与异步  </span></h1>
+同步:发出一个请求，需要等待返回，然后才能发出下一个请求。也就是所有操作都需要做完，才能返回给用户。举一个例子：你有事情需要给家里打电话，可是打不通，于是你就一直打一直打，直到对方接通。这样你一天的时间都在打电话中度过了。
+异步：发出一个请求，不需要等待返回。不需要等待所有操作完才给反馈。举个例子：你有事情打电话，电话打不通，于是你发了封邮件，然后你就不管了，去干其余的事情去了。过段时间对方收到邮件，已经知道什么事情了。然后你这一天还干了很多事情。
+<h1><span id="临界区与临近资源"> 临界区与临近资源  </span></h1>
+临界资源：一次仅允许一个进程使用的共享资源。
+临界区：每个进程中访问临近资源的那段代码称为临界区。
+<h1><span id="死锁-饥饿-活锁"> 死锁 饥饿 活锁  </span></h1>
+死锁：两个或多个线程互相持有对方所需要的资源，导致这些线程都处于等待状态，无法执行。
+<p>饥饿：如果一个线程因为CPU的全部时间被其他线程抢走，而得不到CPU的运行时间，那种这种状态就是饥饿。</p>
+<p>活锁：两个或多个线程拿到资源却又相互释放 ,但是却又不执行，相互谦让，都主动将资源释放给别的线程。</p>
+<h1><span id="线程安全-以及三大特性"> 线程安全 以及三大特性  </span></h1>
+线程安全：如果一段代码在多线程访问的时候能正确的操作共享数据，那么就是线程安全的。
+<p>线程安全的三大特性：</p>
+<p>原子性：即一个操作或多个操作要么全部执行，要么全部不执行。并且执行的过程中不会被任何因素打断。</p>
+<p>可见性：即当多个线程访问一个变量时，一个线程修改了变量的值，那么其余的线程能立刻知道修改的值。</p>
+<p>有序性：程序在执行的时候，程序代码执行的顺序和语句的顺序是一致的。</p>
 
                 
 
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2019/04/12/thread-2/" data-toggle="tooltip" data-placement="top" title="java内存模型">&larr; Previous Post</a>
+                        </li>
                     
                     
                         <li class="next">
@@ -249,6 +276,17 @@
             <!-- Tabe of Content -->
             <!-- Table of Contents -->
 
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text"> 进程与线程  </span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text"> 并行与并发  </span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text"> 同步与异步  </span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.</span> <span class="toc-nav-text"> 临界区与临近资源  </span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.</span> <span class="toc-nav-text"> 死锁 饥饿 活锁  </span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">6.</span> <span class="toc-nav-text"> 线程安全 以及三大特性  </span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
                 
             <!-- Sidebar Container -->
             <div class="
@@ -263,6 +301,10 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
+                          <a class="tag" href="/tags/#多线程" title="多线程">多线程</a>
+                        
+                          <a class="tag" href="/tags/#基本概念" title="基本概念">基本概念</a>
+                        
                     </div>
                 </section>
                 
@@ -296,8 +338,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "your-disqus-ID";
-    var disqus_identifier = "http://yoursite-url/2019/08/05/problem/";
-    var disqus_url = "http://yoursite-url/2019/08/05/problem/";
+    var disqus_identifier = "http://yoursite-url/2019/04/10/thread-1/";
+    var disqus_url = "http://yoursite-url/2019/04/10/thread-1/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

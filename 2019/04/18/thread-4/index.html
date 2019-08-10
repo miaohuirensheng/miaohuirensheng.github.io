@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          java内存区域 - ZhengHao|云楣信息科技
+          线程的五种状态 - ZhengHao|云楣信息科技
         
     </title>
 
-    <link rel="canonical" href="http://yoursite-url/2018/09/28/thread-5/">
+    <link rel="canonical" href="http://yoursite-url/2019/04/18/thread-4/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -90,16 +90,16 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#jvm" title="jvm">jvm</a>
+                              <a class="tag" href="/tags/#多线程" title="多线程">多线程</a>
                             
-                              <a class="tag" href="/tags/#java运行区域" title="java运行区域">java运行区域</a>
+                              <a class="tag" href="/tags/#线程的五种状态" title="线程的五种状态">线程的五种状态</a>
                             
                         </div>
-                        <h1>java内存区域</h1>
-                        <h2 class="subheading">jvm学习系列文章</h2>
+                        <h1>线程的五种状态</h1>
+                        <h2 class="subheading">java多线程</h2>
                         <span class="meta">
                             Posted by zhenghao on
-                            2018-09-28
+                            2019-04-18
                         </span>
                     </div>
                 
@@ -216,12 +216,47 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="synchronized">synchronized</span></h1>
-<p>同步锁，它可以把任何非null的对象当作锁。它是java解决并发问题的一种手段，它保证了线程互斥的访问同步代码。</p>
-<p></p><h2><span id="synchronized作用范围">synchronized作用范围</span></h2><p></p>
-<p>作用于方法:锁住的是当前对象（this）;</p>
-<p>作用于静态方法：该类的字节码，是class实例</p>
-<p>作用于代码块：任意对象</p>
+                <h1><span id="线程的五种状态">线程的五种状态</span></h1>
+<h2><span id="新建">新建</span></h2>
+新创建一个线程对象，但是没有调用此对象的启动方法。
+<p></p><h2><span id="就绪">就绪</span></h2><br>
+线程创建后，调用了start()的方法。该线程位于运行的线程池中，等待cpu调度。<p></p>
+<p></p><h2><span id="运行">运行</span></h2><br>
+线程获取了cpu时间片，执行程序代码。<p></p>
+<p></p><h2><span id="阻塞">阻塞</span></h2><br>
+线程因为某种原因放弃了对CPU的使用，暂时停止运行。<p></p>
+<p>等待阻塞：运行的线程执行了wait()方法，jvm把该线程放入到等待池中。</p>
+<p>同步阻塞：运行的线程获取同步锁的时候，若该同步锁被其余的线程占用，则jvm会把线程放入到锁池中</p>
+<p>其他阻塞：运行的线程执行sleep或者join方法，或者I/O请求，jvm会把该线程设置为阻塞状态。</p>
+<p></p><h2><span id="死亡">死亡</span></h2><br>
+线程正常结束进入死亡状态。<p></p>
+<p>![image-20190806210856459](/Users/zhenghao/Library/Application Support/typora-user-images/image-20190806210856459.png)</p>
+<p></p><h2><span id="join">join</span></h2><br>
+等待这个线程结束，也就是说t.join()方法阻塞调用此方法的线程进入等待阻塞状态，直到t完成，此线程在继续。<p></p>
+<p>我门看一下join的源代码，也就是说当mills等于0的时候，会进入到while(isAlive())的循环，即只要子线程或者，主线程就不停等待。虽然调用的是子线程的wait()方法，但是他是通过主线程去调用的，所以休眠的是主线程。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">join</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        join(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">join</span><span class="params">(<span class="keyword">long</span> millis)</span></span></span><br><span class="line"><span class="function"><span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">    <span class="keyword">long</span> base = System.currentTimeMillis();</span><br><span class="line">    <span class="keyword">long</span> now = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (millis &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"timeout value is negative"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (millis == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span> (isAlive()) &#123;</span><br><span class="line">            wait(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">while</span> (isAlive()) &#123;</span><br><span class="line">            <span class="keyword">long</span> delay = millis - now;</span><br><span class="line">            <span class="keyword">if</span> (delay &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            wait(delay);</span><br><span class="line">            now = System.currentTimeMillis() - base;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p></p><h2><span id="wait">wait</span></h2><br>
+暂停当前线程进入等待状态。<p></p>
+<p>我门看下面这段代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadTest</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> number = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">firstMethod</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</span><br><span class="line">            number += <span class="number">100</span>;</span><br><span class="line">            System.out.println(number);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">secondMethod</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</span><br><span class="line"><span class="comment">//            Thread.sleep(2000);</span></span><br><span class="line">            <span class="keyword">this</span>.wait(<span class="number">2000</span>);</span><br><span class="line">            number += <span class="number">200</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            firstMethod();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        ThreadTest threadTest = <span class="keyword">new</span> ThreadTest();</span><br><span class="line">        Thread thread = <span class="keyword">new</span> Thread(threadTest);</span><br><span class="line">        thread.start();</span><br><span class="line">        threadTest.secondMethod();</span><br><span class="line">        System.out.println(<span class="string">"number="</span>+threadTest.number);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p>1.如果secondMethod()中调用的是sleep(2000)</p>
+<p>310<br>
+number=310</p>
+<p>2.如果secondMethod()中调用的是this.wait(2000)</p>
+<p>110<br>
+number=310</p>
+<p>分析:main方法的优先等级高于子线程的优先等级，所以会先调用secondMethod（），如果secondMethod（）中是sleep 那么ThreadTest处于休眠状态，这时候ThreadTest线程启动调用run方法，但是这时候secondMethod（）已经拿到ThreadTest的锁，并且sleep不会释放锁，那么这时候firstMethod（）方法进不来，需要等待sleep结束后，这时候number会加上这个200，然后在firstMethod（）中在加100，结果为310，main方法中也为310.</p>
+<p>如果secondMethod（）中是wait(),wait()方法会释放锁，这时候wait()暂停当前调用他的main线程，因为锁被释放所以firstMethod（）方法直接执行，输出为110，wait结束后，main线程输出最终结果310.</p>
+<p></p><h2><span id="sleep-join-wait-方法的区别">sleep  join wait 方法的区别</span></h2><br>
+Sleep()暂停当前线程，不会释放锁。<p></p>
+<p>Join() 和wait() 暂停调它用的线程，会释放锁。</p>
+<p>join() 是object中的方法，wait()是thread中的方法。</p>
+<p>wait()方法必须在synchronized中，否则会抛出java.lang.IllegalMonitorStateException</p>
+<p>join() 方法可以不在synchronized中。</p>
+<p></p><h2><span id="yield">yield()</span></h2><br>
+Yield()的作用是让步，它能够让当前线程从运行状态到就绪状态，其他线程可以获取到执行的权，也有可能是当前线程又从就绪状态到运行状态。<p></p>
+<p>举个例子：一群朋友在排队上车，这时候到yield 上车的时候，他不马上上去，而是说大家一起上，谁先上去就是谁的。那么有可能是yiel的又上去了，也有可能是其余人(线程)上去了，到了运行状态。</p>
 
                 
 
@@ -230,12 +265,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/2018/09/28/thread-4/" data-toggle="tooltip" data-placement="top" title="java内存区域">&larr; Previous Post</a>
+                            <a href="/2019/04/26/thread-5/" data-toggle="tooltip" data-placement="top" title="synchronized">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/2017/03/18/hexo-theme-beantech/" data-toggle="tooltip" data-placement="top" title="[Hexo] Theme BeanTech">Next Post &rarr;</a>
+                            <a href="/2019/04/15/thread-3/" data-toggle="tooltip" data-placement="top" title="创建线程的几种方式">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -265,7 +300,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">synchronized</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">synchronized作用范围</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">线程的五种状态</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">新建</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">就绪</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">运行</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">阻塞</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">死亡</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">join</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">wait</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.8.</span> <span class="toc-nav-text">sleep  join wait 方法的区别</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.9.</span> <span class="toc-nav-text">yield()</span></a></li></ol></li></ol>
         
         </div>
       </aside>
@@ -285,9 +320,9 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#jvm" title="jvm">jvm</a>
+                          <a class="tag" href="/tags/#多线程" title="多线程">多线程</a>
                         
-                          <a class="tag" href="/tags/#java运行区域" title="java运行区域">java运行区域</a>
+                          <a class="tag" href="/tags/#线程的五种状态" title="线程的五种状态">线程的五种状态</a>
                         
                     </div>
                 </section>
@@ -322,8 +357,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "your-disqus-ID";
-    var disqus_identifier = "http://yoursite-url/2018/09/28/thread-5/";
-    var disqus_url = "http://yoursite-url/2018/09/28/thread-5/";
+    var disqus_identifier = "http://yoursite-url/2019/04/18/thread-4/";
+    var disqus_url = "http://yoursite-url/2019/04/18/thread-4/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

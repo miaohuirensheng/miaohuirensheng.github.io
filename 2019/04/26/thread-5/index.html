@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          java内存区域 - ZhengHao|云楣信息科技
+          synchronized - ZhengHao|云楣信息科技
         
     </title>
 
-    <link rel="canonical" href="http://yoursite-url/2018/09/28/thread-3/">
+    <link rel="canonical" href="http://yoursite-url/2019/04/26/thread-5/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -90,16 +90,16 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#jvm" title="jvm">jvm</a>
+                              <a class="tag" href="/tags/#多线程" title="多线程">多线程</a>
                             
-                              <a class="tag" href="/tags/#java运行区域" title="java运行区域">java运行区域</a>
+                              <a class="tag" href="/tags/#synchronized" title="synchronized">synchronized</a>
                             
                         </div>
-                        <h1>java内存区域</h1>
-                        <h2 class="subheading">jvm学习系列文章</h2>
+                        <h1>synchronized</h1>
+                        <h2 class="subheading">java多线程</h2>
                         <span class="meta">
                             Posted by zhenghao on
-                            2018-09-28
+                            2019-04-26
                         </span>
                     </div>
                 
@@ -216,44 +216,12 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="创建线程的几种方式">创建线程的几种方式</span></h1>
-<p></p><h2><span id="继承thread">继承Thread</span></h2><p></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Thread1</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">        Runner xiaoMing=<span class="keyword">new</span> Runner();</span><br><span class="line">        xiaoMing.setName(<span class="string">"小明"</span>);</span><br><span class="line">        Runner xiaoHong=<span class="keyword">new</span> Runner();</span><br><span class="line">        xiaoHong.setName(<span class="string">"小红"</span>);</span><br><span class="line">        xiaoHong.start();</span><br><span class="line">        xiaoMing.start();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Runner</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Integer speed=<span class="keyword">new</span> Random().nextInt(<span class="number">100</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">100</span>;i++)&#123;</span><br><span class="line">            System.out.println(<span class="keyword">this</span>.getName()+<span class="string">"已经前进"</span>+speed*i);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p></p><h2><span id="实现runnable接口">实现Runnable接口</span></h2><p></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">thread2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">        Thread xiaoMing=<span class="keyword">new</span> Thread(<span class="keyword">new</span> Runner2());</span><br><span class="line">        Thread xiaoHong=<span class="keyword">new</span> Thread(<span class="keyword">new</span> Runner2());</span><br><span class="line">        xiaoMing.setName(<span class="string">"小明"</span>);</span><br><span class="line">        xiaoHong.setName(<span class="string">"小红"</span>);</span><br><span class="line">        xiaoHong.start();</span><br><span class="line">        xiaoMing.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Runner2</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Integer speed=<span class="keyword">new</span> Random().nextInt(<span class="number">100</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">100</span>;i++)&#123;</span><br><span class="line">            System.out.println(Thread.currentThread().getName()+<span class="string">"前进"</span>+speed*i);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p></p><h3><span id="使用callable和future创建线程">使用Callable和Future创建线程</span></h3><p></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">thread3</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> <span class="keyword">throws</span> ExecutionException, InterruptedException </span>&#123;</span><br><span class="line">        ExecutorService executorService= Executors.newFixedThreadPool(<span class="number">2</span>);</span><br><span class="line">        Runner3 xiaoMing=<span class="keyword">new</span> Runner3();</span><br><span class="line">        xiaoMing.setName(<span class="string">"小明"</span>);</span><br><span class="line">        Runner3 xiaoHing=<span class="keyword">new</span> Runner3();</span><br><span class="line">        xiaoHing.setName(<span class="string">"小红"</span>);</span><br><span class="line"></span><br><span class="line">        Future&lt;Integer&gt; result1=executorService.submit(xiaoMing);</span><br><span class="line">        Future&lt;Integer&gt; result2=executorService.submit(xiaoHing);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">5000</span>);<span class="comment">//休眠等待所有线程执行完成</span></span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        executorService.shutdown();</span><br><span class="line">        System.out.println(<span class="string">"小明"</span>+result2.get());</span><br><span class="line">        System.out.println(<span class="string">"小红"</span>+result1.get());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Runner3</span> <span class="keyword">implements</span> <span class="title">Callable</span>&lt;<span class="title">Integer</span>&gt;</span>&#123;</span><br><span class="line">   <span class="keyword">private</span> String name;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">       <span class="keyword">this</span>.name=name;</span><br><span class="line">   &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Integer speed=<span class="keyword">new</span> Random().nextInt(<span class="number">100</span>);</span><br><span class="line">        Integer distince=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">100</span>;i++)&#123;</span><br><span class="line">            Thread.sleep(<span class="number">10</span>);</span><br><span class="line">            distince=speed*i;</span><br><span class="line">            System.out.println(name+<span class="string">"前进"</span>+speed*i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> distince;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p></p><h2><span id="创建线程的三种方式的对比">创建线程的三种方式的对比</span></h2><p></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>继承Thread</th>
-<th>实现Runnable接口</th>
-<th>利用线程池</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>有点</td>
-<td>变成简单执行效率高</td>
-<td>面向接口编程执行效率高</td>
-<td>容器管理线程允许返回异常</td>
-</tr>
-<tr>
-<td>缺点</td>
-<td>单继承无法对线程有效控制</td>
-<td>无法对线程有效控制没有返回值</td>
-<td>执行率相对低，编程麻烦</td>
-</tr>
-<tr>
-<td>使用场景</td>
-<td>不推荐</td>
-<td>简单的多线程程序</td>
-<td>企业级应用推荐</td>
-</tr>
-</tbody>
-</table>
+                <h1><span id="synchronized">synchronized</span></h1>
+同步锁，它可以把任何非null的对象当作锁。它是java解决并发问题的一种手段，它保证了线程互斥的访问同步代码。
+<p></p><h2><span id="synchronized作用范围">synchronized作用范围</span></h2><br>
+作用于方法:锁住的是当前对象（this）;<p></p>
+<p>作用于静态方法：该类的字节码，是class实例</p>
+<p>作用于代码块：任意对象</p>
 
                 
 
@@ -262,12 +230,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/2018/09/28/thread-2/" data-toggle="tooltip" data-placement="top" title="java内存区域">&larr; Previous Post</a>
+                            <a href="/2019/08/07/problem/" data-toggle="tooltip" data-placement="top" title="">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/2018/09/28/thread-4/" data-toggle="tooltip" data-placement="top" title="java内存区域">Next Post &rarr;</a>
+                            <a href="/2019/04/18/thread-4/" data-toggle="tooltip" data-placement="top" title="线程的五种状态">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -297,7 +265,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">创建线程的几种方式</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">继承Thread</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">实现Runnable接口</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">使用Callable和Future创建线程</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">创建线程的三种方式的对比</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">synchronized</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">synchronized作用范围</span></a></li></ol></li></ol>
         
         </div>
       </aside>
@@ -317,9 +285,9 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#jvm" title="jvm">jvm</a>
+                          <a class="tag" href="/tags/#多线程" title="多线程">多线程</a>
                         
-                          <a class="tag" href="/tags/#java运行区域" title="java运行区域">java运行区域</a>
+                          <a class="tag" href="/tags/#synchronized" title="synchronized">synchronized</a>
                         
                     </div>
                 </section>
@@ -354,8 +322,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "your-disqus-ID";
-    var disqus_identifier = "http://yoursite-url/2018/09/28/thread-3/";
-    var disqus_url = "http://yoursite-url/2018/09/28/thread-3/";
+    var disqus_identifier = "http://yoursite-url/2019/04/26/thread-5/";
+    var disqus_url = "http://yoursite-url/2019/04/26/thread-5/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
