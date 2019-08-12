@@ -240,6 +240,39 @@
 
 <div class="post-preview">
 
+    <a href="/2019/05/26/thread-6/">
+        <h2 class="post-title">
+            死锁
+        </h2>
+        <h3 class="post-subtitle">
+            java多线程
+        </h3>
+        <div class="post-content-preview">
+            死锁
+什么是死锁
+所谓死锁通俗一点说就是，多个线程彼此持有对方的资源而不释放，导致这些线程处于等待状态，无法执行。举一个通俗一点的例子就是，一个宝藏需要两把钥匙，同一时间正好来了两个人，他们一个人对应一把钥匙。但是双方都不等对方把钥匙交出来才打开宝藏，可是双发都不释放自己的钥匙，就这样一直等待下去。这就是死锁。
+...
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by zhenghao on
+            2019-05-26
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#多线程" title="多线程">多线程</a>
+            
+              <a href="/tags/#死锁" title="死锁">死锁</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/2019/04/26/thread-5/">
         <h2 class="post-title">
             synchronized
@@ -253,8 +286,9 @@
 synchronized作用范围
 作用于方法:锁住的是当前对象（this）;
 作用于静态方法：该类的字节码，是class实例
-作用于代码块：任意对象
-...
+作用于代码块：锁的是调用这个代码块的对象。
+作用于代码块
+12345678910111213141516171819202122......
         </div>
     </a>
     
@@ -541,51 +575,16 @@ public static void main(String [] args){
 </div>
 <hr>
 
-<div class="post-preview">
-
-    <a href="/2017/03/18/hexo-theme-beantech/">
-        <h2 class="post-title">
-            [Hexo] Theme BeanTech
-        </h2>
-        <h3 class="post-subtitle">
-            This is hexo theme Demo.
-        </h3>
-        <div class="post-content-preview">
-            
-Ported Theme of Hux Blog, Thank Huxpro for designing such a flawless theme.
-This BeanTech theme created by YuHsuan modified from the original Porter Kaijun
-
-
-
-
-Usage
-
-I publish the whole project f......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by zhenghao on
-            2017-03-18
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Hexo" title="Hexo">Hexo</a>
-            
-              <a href="/tags/#Blog" title="Blog">Blog</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
 
 
 <!-- Pager -->
 
 <ul class="pager">
     
+    
+        <li class="next">
+            <a href="/archives/2/">Older Posts &rarr;</a>
+        </li>
     
 </ul>
 
@@ -612,6 +611,10 @@ I publish the whole project f......
     <div class="tags">
         
             
+        
+            
+        
+            
             <a href="/tags/#jvm" title="jvm" rel="3">jvm</a>
             
         
@@ -622,11 +625,9 @@ I publish the whole project f......
             
         
             
-        
+            <a href="/tags/#多线程" title="多线程" rel="6">多线程</a>
             
         
-            
-            <a href="/tags/#多线程" title="多线程" rel="5">多线程</a>
             
         
             
@@ -713,6 +714,10 @@ I publish the whole project f......
         </li>
       
         <li>
+          <a href="/2019/05/26/thread-6/">死锁</a>
+        </li>
+      
+        <li>
           <a href="/2019/04/26/thread-5/">synchronized</a>
         </li>
       
@@ -722,10 +727,6 @@ I publish the whole project f......
       
         <li>
           <a href="/2019/04/15/thread-3/">创建线程的几种方式</a>
-        </li>
-      
-        <li>
-          <a href="/2019/04/12/thread-2/">java内存模型</a>
         </li>
       
     </ul>

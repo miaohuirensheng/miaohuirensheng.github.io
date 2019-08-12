@@ -200,19 +200,19 @@
             <!-- 标签云 -->
             <div id='tag_cloud' class="tags">
                 
-                    <a href="#jvm" title="jvm" rel="3">jvm</a>
-                
-                    <a href="#java运行区域" title="java运行区域" rel="1">java运行区域</a>
-                
                     <a href="#Hexo" title="Hexo" rel="1">Hexo</a>
                 
                     <a href="#Blog" title="Blog" rel="1">Blog</a>
+                
+                    <a href="#jvm" title="jvm" rel="3">jvm</a>
+                
+                    <a href="#java运行区域" title="java运行区域" rel="1">java运行区域</a>
                 
                     <a href="#java运行时常量池" title="java运行时常量池" rel="1">java运行时常量池</a>
                 
                     <a href="#对象在内存中的布局" title="对象在内存中的布局" rel="1">对象在内存中的布局</a>
                 
-                    <a href="#多线程" title="多线程" rel="5">多线程</a>
+                    <a href="#多线程" title="多线程" rel="6">多线程</a>
                 
                     <a href="#基本概念" title="基本概念" rel="1">基本概念</a>
                 
@@ -224,10 +224,64 @@
                 
                     <a href="#synchronized" title="synchronized" rel="1">synchronized</a>
                 
+                    <a href="#死锁" title="死锁" rel="1">死锁</a>
+                
             </div>
 
             <!-- 标签列表 -->
 
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="Hexo">
+                    <span class="tag-text">Hexo</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2017/03/18/hexo-theme-beantech/">
+                        <h2 class="post-title">
+                            [Hexo] Theme BeanTech
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                This is hexo theme Demo.
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="Blog">
+                    <span class="tag-text">Blog</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2017/03/18/hexo-theme-beantech/">
+                        <h2 class="post-title">
+                            [Hexo] Theme BeanTech
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                This is hexo theme Demo.
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
             
             <div class="one-tag-list">
                 <span class="fa fa-tag listing-seperator" id="jvm">
@@ -310,58 +364,6 @@
                         
                             <h3 class="post-subtitle">
                                 jvm学习系列文章
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="Hexo">
-                    <span class="tag-text">Hexo</span>
-                </span>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2017/03/18/hexo-theme-beantech/">
-                        <h2 class="post-title">
-                            [Hexo] Theme BeanTech
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                This is hexo theme Demo.
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="Blog">
-                    <span class="tag-text">Blog</span>
-                </span>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2017/03/18/hexo-theme-beantech/">
-                        <h2 class="post-title">
-                            [Hexo] Theme BeanTech
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                This is hexo theme Demo.
                             </h3>
                         
                     </a>
@@ -523,6 +525,25 @@
                 </div>
                 <hr>
                 
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2019/05/26/thread-6/">
+                        <h2 class="post-title">
+                            死锁
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                java多线程
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
             </div>
             
             <div class="one-tag-list">
@@ -642,6 +663,32 @@
                      <a href="/2019/04/26/thread-5/">
                         <h2 class="post-title">
                             synchronized
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                java多线程
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="死锁">
+                    <span class="tag-text">死锁</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2019/05/26/thread-6/">
+                        <h2 class="post-title">
+                            死锁
                         </h2>
                         
                             <h3 class="post-subtitle">

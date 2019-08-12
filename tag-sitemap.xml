@@ -65,22 +65,29 @@
     </url>
 
     <url>
+        <loc>http://yoursite-url/tags/%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%BA%94%E7%A7%8D%E7%8A%B6%E6%80%81/</loc>
+        <lastmod>2019-08-10T03:41:00.779Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://yoursite-url/tags/synchronized/</loc>
-        <lastmod>2019-08-10T03:40:50.841Z</lastmod>
+        <lastmod>2019-08-11T04:40:13.787Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://yoursite-url/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
-        <lastmod>2019-08-10T03:41:00.779Z</lastmod>
+        <lastmod>2019-08-11T08:05:54.457Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite-url/tags/%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%BA%94%E7%A7%8D%E7%8A%B6%E6%80%81/</loc>
-        <lastmod>2019-08-10T03:41:00.779Z</lastmod>
+        <loc>http://yoursite-url/tags/%E6%AD%BB%E9%94%81/</loc>
+        <lastmod>2019-08-11T08:05:54.457Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

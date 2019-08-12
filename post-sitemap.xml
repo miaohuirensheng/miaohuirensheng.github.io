@@ -7,8 +7,8 @@
     </url>
 
     <url>
-        <loc>http://yoursite-url/2019/04/18/thread-4/</loc>
-        <lastmod>2019-08-10T03:41:00.779Z</lastmod>
+        <loc>http://yoursite-url/2019/05/26/thread-6/</loc>
+        <lastmod>2019-08-11T08:05:54.457Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -16,7 +16,15 @@
 
     <url>
         <loc>http://yoursite-url/2019/04/26/thread-5/</loc>
-        <lastmod>2019-08-10T03:40:50.841Z</lastmod>
+        <lastmod>2019-08-11T04:40:13.787Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite-url/2019/04/18/thread-4/</loc>
+        <lastmod>2019-08-10T03:41:00.779Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
